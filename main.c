@@ -1,19 +1,36 @@
+#define N 10
 #include <stdio.h>
+char str[100];
 
-int check(int N);
+int input(int n);
+void output(int n);
 
-int main() {
-    int N;
-    scanf("%d",&N);
-    check(N)?printf("Divisible, %d",N):printf("Indivisible, %d",N);
+int main(){
+    int count=0;
+    if (input(N)) return 1;
+    output(N);
+    for (int i=0; i<N; i++){
+        if (    (str[i] == '.') ||
+                (str[i] == ',') ||
+                (str[i] == ':') ||
+                (str[i] == ';') ||
+                (str[i] == '-')    ) count++;
+    }
+    printf("\n%d", count);
     return 0;
 }
 
-int check(int N){
-    int i=2;
-    while (i<=(N / 2)){
-        if (!(N % i)) return 1;
-        i++;
+int input(int n){
+    printf("\n");
+    for (int i=0; i<n; i++){
+        scanf("%c",&str[i]);
     }
     return 0;
+}
+void output(int n){
+    printf("\n");
+    for (int i=0; i<n; i++){
+        printf("%c",str[i]);
+    }
+    return;
 }
